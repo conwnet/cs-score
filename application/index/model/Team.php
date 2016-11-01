@@ -2,6 +2,6 @@
 namespace app\index\model;
 use think\Model;
 
-class Team extends Model{
+class Team extends Model {
 
 }

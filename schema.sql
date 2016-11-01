@@ -1,26 +1,18 @@
 
-CREATE DATABASE `cs_target` DEFAULT CHARACTER SET utf8;
-use `cs_target`;
+use `sau_score`;
 
 CREATE TABLE `cs_user` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
   `username` VARCHAR(63) DEFAULT '',
   `password` VARCHAR(127) DEFAULT '',
   `name` VARCHAR(63) DEFAULT '',
-  `sex` INT DEFAULT 0,
-  `birthday` VARCHAR(63) DEFAULT '',
-  `email` VARCHAR(127) DEFAULT '',
-  `phone` VARCHAR(63) DEFAULT '',
-  `address` VARCHAR(63) DEFAULT '',
-  `team_id` INT DEFAULT 0,
   `power` INT DEFAULT 1,
   `status` INT DEFAULT 0,
   `remark` VARCHAR(1023) DEFAULT ''
 );
 
-CREATE TABLE `cs_team` (
+CREATE TABLE `cs_major` (
   `id` INT PRIMARY KEY AUTO_INCREMENT,
-  `number` VARCHAR(63) DEFAULT '',
   `name` VARCHAR(127) DEFAULT '',
   `year` VARCHAR(63) DEFAULT '',
   `user_sum` INT DEFAULT 0
@@ -44,6 +36,7 @@ CREATE TABLE `cs_type` (
 
 INSERT INTO `cs_user` (`username`, `password`, `power`) VALUES ('admin', '30ea328eb728bcd6823825f99032d3de', 0);
 INSERT INTO `cs_type` (`name`) VALUES ('其他');
+
 
 
 

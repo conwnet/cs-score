@@ -15,6 +15,7 @@ return [
     '/ilogin' => 'index/index/i_sau_login',
     '/logout' => 'index/index/logout',
 
+    '/admin' => 'index/user/admin',
     '/user/[:id]' => 'index/user/user',
     '/users/[:page]/[:team]/[:type]' => 'index/user/users',
     '/delete/user/:id' => 'index/user/delete',
@@ -27,7 +28,7 @@ return [
     '/type/[:id]' => 'index/type/type',
     '/delete/type/[:id]' => 'index/type/delete',
 
-    '/targets/[:id]' => 'index/target/targets',
-    '/target/[:id]' => 'index/target/target',
-    '/delete/target/:id' => 'index/target/delete',
+    '/scores/[:id]' => 'index/score/scores',
+    '/score/[:id]' => 'index/score/score',
+    '/delete/score/:id' => 'index/score/delete',
 ];

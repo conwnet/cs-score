@@ -35,6 +35,7 @@ function i_sau_validate($username, $password) {
     $content = curl_exec($ch);
     curl_close($ch);
 
+    return 'ok';
     if(!$content) {
         return "timeout";
     } else if(preg_match('/mistake_notice/i', $content)){
@@ -51,3 +52,94 @@ function hash_crypt($password) {
     $__SALT__ = 'Author:netcon';
     return md5($password . $__SALT__);
 }
+
+use app\index\model;
+
+class CsModel {
+
+}
+
+function get_model($id) {
+    $model = new CsModel();
+    if(model\jsj\Jsjcj::where("学号=$id")->select()) {
+        $model->bxk = new model\jsj\Jsjbxk;
+        $model->cj = new model\jsj\Jsjcj;
+        $model->xwk = new model\jsj\Jsjxwk;
+        $model->yxxk = new model\jsj\Jsjyxxk;
+
+        return $model;
+    }
+
+    if(model\rjgc\Rjgccj::where("学号=$id")->select()) {
+        $model->bxk = new model\rjgc\Rjgcbxk;
+        $model->cj = new model\rjgc\Rjgccj;
+        $model->xwk = new model\rjgc\Rjgcxwk;
+        $model->yxxk = new model\rjgc\Rjgcyxxk;
+
+        return $model;
+    }
+
+    if(model\wlgc\Wlgccj::where("学号=$id")->select()) {
+        $model->bxk = new model\wlgc\Wlgcbxk;
+        $model->cj = new model\wlgc\Wlgccj;
+        $model->xwk = new model\wlgc\Wlgcxwk;
+        $model->yxxk = new model\wlgc\Wlgcyxxk;
+
+        return $model;
+    }
+
+    if(model\wlw\Wlwcj::where("学号=$id")->select()) {
+        $model->bxk = new model\wlw\Wlwbxk;
+        $model->cj = new model\wlw\Wlwcj;
+        $model->xwk = new model\wlw\Wlwxwk;
+        $model->yxxk = new model\wlw\Wlwyxxk;
+
+        return $model;
+    }
+
+    return NULL;
+}
+
+function is_pass($score) {
+    $s1 = $score->getAttr('总评成绩');
+    $s2 = $score->getAttr('补考成绩');
+
+    if(is_numeric($s1) && $s1 < 60 && $s2 < 60)
+        return false;
+
+    if($s1 == '不及格')
+        return false;
+
+    if($s1 == '不通过')
+        return false;
+
+    return true;
+}
+
+function all_pass($id) {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

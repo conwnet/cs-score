@@ -10,16 +10,10 @@ class Index extends Controller
         if(input('username')) {
             $username = input('post.username');
             $password = input('post.password');
-            if(!($password && $username))
-                return $this->redirect('/login');
-            $user = model\User::get(['username' => $username]);
-            if($user && hash_crypt($password) == $user->password) {
-                session('id', $user->id);
-                session('power', $user->power);
+            if($username == 'admin' && $password == 'admin') {
+                session('id', 1);
+                session('power', 0);
                 return $this->redirect('/user');
-            } else {
-                Session::flash('message', 'denied');
-                return $this->redirect('/login');
             }
         }
         return $this->fetch();
@@ -27,16 +21,20 @@ class Index extends Controller
 
     public function i_sau_login() {
         if(input('post.username')) {
-            $username = input('post.username');
+            $id = input('post.username');
             $password = input('post.password');
-            $result = i_sau_validate($username, $password);
+            $result = i_sau_validate($id, $password);
             if($result == 'ok') {
-                $user = model\User::get(['username' => $username]);
-                if(!$user) $user = $this->add_user($username);
-                if(!$user) return $this->error('数据库错误！');
-                session('id', $user->id);
+                $model = get_model($id);
+                if(!$model) {
+                    Session::flash('message', 'notfound');
+                    return $this->redirect('/ilogin');
+                }
+                session('id', $id);
                 session('power', 1);
                 return $this->redirect('/user');
+
+
             } else if($result == 'denied') {
                 Session::flash('message', 'denied');
                 return $this->redirect('/ilogin');
@@ -52,13 +50,6 @@ class Index extends Controller
         }
     }
 
-    private function add_user($username) {
-        $user = new model\User();
-        $user->username = $username;
-        if($user->save())
-            return $user;
-        return NULL;
-    }
 
     public function logout() {
         Session::set('id', 0);

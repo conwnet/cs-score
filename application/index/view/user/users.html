@@ -13,26 +13,44 @@
             </li>
             <li>
                 <a class="dropdown-toggle" href="#">
-                    <p class="text-center">分类 &#43;</p>
+                    <p class="text-center">计算机 &#43;</p>
                 </a>
                 <ul class="submenu">
-                    <?php foreach($types as $v) { ?>
-                    <li><a href="/users/0/{$team}/{$v->id}" class="text-center">{$v->name}</a></li>
-                    <?php } ?>
+
+                    <li><a href="/users/0/" class="text-center"></a></li>
+
                 </ul>
             </li>
-            <?php foreach($teams as $year => $_team) { ?>
             <li>
                 <a class="dropdown-toggle" href="#">
-                    <p class="text-center">{$year} &#43;</p>
+                    <p class="text-center">网络工程 &#43;</p>
                 </a>
                 <ul class="submenu">
-                    <?php foreach($_team as $v) { ?>
-                    <li><a href="/users/0/{$v->id}/{$type}" class="text-center">{$v->number}</a></li>
-                    <?php } ?>
+
+                    <li><a href="/users/0/" class="text-center"></a></li>
+
                 </ul>
             </li>
-            <?php } ?>
+            <li>
+                <a class="dropdown-toggle" href="#">
+                    <p class="text-center">软件工程 &#43;</p>
+                </a>
+                <ul class="submenu">
+
+                    <li><a href="/users/0/" class="text-center"></a></li>
+
+                </ul>
+            </li>
+            <li>
+                <a class="dropdown-toggle" href="#">
+                    <p class="text-center">物联网 &#43;</p>
+                </a>
+                <ul class="submenu">
+
+                    <li><a href="/users/0/" class="text-center"></a></li>
+
+                </ul>
+            </li>
         </ul>
     </div>
 
@@ -69,10 +87,10 @@
                         <?php foreach($users as $user) { ?>
                         <tr>
                             <td class="number"></td>
-                            <td>{$user->name}</td>
-                            <td>{$user->username}</td>
-                            <td>{$user->team_id}</td>
-                            <td><a href="/targets/{$user->id}">查看</a> <a href="/delete/user/{$user->id}">删除</a></td>
+                            <td>{$user->getAttr('姓名')}</td>
+                            <td>{$user->getAttr('学号')}</td>
+                            <td>{$user->getAttr('班级')}</td>
+                            <td><a href="/scores/{$user->getAttr('学号')}">查看详细</a></td>
                         </tr>
                         <?php } ?>
                         </tbody>
@@ -93,7 +111,7 @@
 <script src="/static/admin/js/theme.js"></script>
 <script>
     var vs = document.getElementsByClassName('number');
-    var start = {$page} * 10;
+    var start = {$page} * 20;
     for(var i = 0; i < vs.length; i++) {
         vs[i].innerHTML = start + i + 1;
     }
