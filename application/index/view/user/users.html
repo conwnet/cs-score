@@ -16,9 +16,9 @@
                     <p class="text-center">计算机 &#43;</p>
                 </a>
                 <ul class="submenu">
-
-                    <li><a href="/users/0/" class="text-center"></a></li>
-
+                    <?php foreach($jsj_teams as $v) { ?>
+                    <li><a href="/users/0/1/{$v['班级']}" class="text-center">{$v['班级']}</a></li>
+                    <?php } ?>
                 </ul>
             </li>
             <li>
@@ -26,9 +26,9 @@
                     <p class="text-center">网络工程 &#43;</p>
                 </a>
                 <ul class="submenu">
-
-                    <li><a href="/users/0/" class="text-center"></a></li>
-
+                    <?php foreach($wlgc_teams as $v) { ?>
+                    <li><a href="/users/0/2/{$v['班级']}" class="text-center">{$v['班级']}</a></li>
+                    <?php } ?>
                 </ul>
             </li>
             <li>
@@ -36,9 +36,9 @@
                     <p class="text-center">软件工程 &#43;</p>
                 </a>
                 <ul class="submenu">
-
-                    <li><a href="/users/0/" class="text-center"></a></li>
-
+                    <?php foreach($rjgc_teams as $v) { ?>
+                    <li><a href="/users/0/3/{$v['班级']}" class="text-center">{$v['班级']}</a></li>
+                    <?php } ?>
                 </ul>
             </li>
             <li>
@@ -46,9 +46,9 @@
                     <p class="text-center">物联网 &#43;</p>
                 </a>
                 <ul class="submenu">
-
-                    <li><a href="/users/0/" class="text-center"></a></li>
-
+                    <?php foreach($wlw_teams as $v) { ?>
+                    <li><a href="/users/0/4/{$v['班级']}" class="text-center">{$v['班级']}</a></li>
+                    <?php } ?>
                 </ul>
             </li>
         </ul>
@@ -85,7 +85,7 @@
                         </thead>
                         <tbody>
                         <?php foreach($users as $user) { ?>
-                        <tr>
+                        <tr{:no_pass($user->getAttr('学号')) ? ' class="danger"' : ''}>
                             <td class="number"></td>
                             <td>{$user->getAttr('姓名')}</td>
                             <td>{$user->getAttr('学号')}</td>
@@ -98,8 +98,8 @@
                 </div>
                 <div class="pagination pull-right">
                     <ul>
-                        <li><a href="/users/{$page - 1}/{$team}/{$type}">&#8249;</a></li>
-                        <li><a href="/users/{$page + 1}/{$team}/{$type}">&#8250;</a></li>
+                        <li><a href="/users/{$page - 1}/{$major}/{$team}">&#8249;</a></li>
+                        <li><a href="/users/{$page + 1}/{$major}/{$team}">&#8250;</a></li>
                     </ul>
                 </div>
             </div>

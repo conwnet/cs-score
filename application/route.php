@@ -17,7 +17,7 @@ return [
 
     '/admin' => 'index/user/admin',
     '/user/[:id]' => 'index/user/user',
-    '/users/[:page]/[:team]/[:type]' => 'index/user/users',
+    '/users/[:page]/[:major]/[:team]' => 'index/user/users',
     '/delete/user/:id' => 'index/user/delete',
 
     '/teams' => 'index/team/teams',
@@ -29,6 +29,5 @@ return [
     '/delete/type/[:id]' => 'index/type/delete',
 
     '/scores/[:id]' => 'index/score/scores',
-    '/score/[:id]' => 'index/score/score',
-    '/delete/score/:id' => 'index/score/delete',
+    '/score/[:id]/[$:number]' => 'index/score/score'
 ];

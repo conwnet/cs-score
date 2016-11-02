@@ -118,7 +118,21 @@ function is_pass($score) {
 
 function no_pass($id) {
     $model = get_model($id);
-    
+    $bxks = $model->bxk->select();
+    $cjs = $model->cj->where("学号=$id")->select();
+    $ret = [];
+    foreach($bxks as $bxk) {
+        $pass = false;
+        foreach($cjs as $cj) {
+            if($cj['课程名称'] == $bxk['课程名称'] && is_pass($cj)) {
+                $pass = true;
+            }
+        }
+        if(!$pass)
+            $ret[] = $bxk;
+    }
+
+    return $ret;
 }
 
 

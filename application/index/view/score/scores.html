@@ -59,7 +59,7 @@
                             <td>{$score->getAttr('学分')}</td>
                             <td>{$score->getAttr('总评成绩')}</td>
                             <td>{$score->getAttr('补考成绩')}</td>
-                            <td><a href="/score/{$score->getAttr('学号')}">查看详细</a></td>
+                            <td><a href="/score/{$score->getAttr('学号')}/{$score->getAttr('选课课号')}">查看详细</a></td>
                         </tr>
                         <?php } ?>
                         </tbody>
