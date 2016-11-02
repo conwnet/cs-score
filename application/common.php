@@ -116,8 +116,9 @@ function is_pass($score) {
     return true;
 }
 
-function all_pass($id) {
-
+function no_pass($id) {
+    $model = get_model($id);
+    
 }
 
 
