@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d2bc512-6f0c-4491-a021-25e512a297af" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/common.php" afterPath="$PROJECT_DIR$/application/common.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/controller/Score.php" afterPath="$PROJECT_DIR$/application/index/controller/Score.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/controller/User.php" afterPath="$PROJECT_DIR$/application/index/controller/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/score/scores.html" afterPath="$PROJECT_DIR$/application/index/view/score/scores.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/index/view/user/users.html" afterPath="$PROJECT_DIR$/application/index/view/user/users.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/route.php" afterPath="$PROJECT_DIR$/application/route.php" />
     </list>
     <ignored path="cs-score.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/application/index/controller/Score.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="462">
-              <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+              <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -664,12 +658,12 @@
       <updated>1477982305505</updated>
       <workItem from="1477982306792" duration="8192000" />
       <workItem from="1477993727333" duration="15542000" />
-      <workItem from="1478057923708" duration="6163000" />
+      <workItem from="1478057923708" duration="6752000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29897000" />
+    <option name="totallyTimeSpent" value="30486000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1092,7 +1086,7 @@
     <entry file="file://$PROJECT_DIR$/application/index/controller/Score.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
-          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+          <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
           <folding />
         </state>
       </provider>

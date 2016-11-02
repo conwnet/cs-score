@@ -21,7 +21,7 @@ class Score extends Controller
 
     public function score($id=0, $number=0) {
 
-        $cj = get_model($id)->cj;
+        $score = get_model($id)->cj->where("`学号`='$id' and ``");
 
 
         return $this->fetch();
