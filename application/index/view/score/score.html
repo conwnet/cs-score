@@ -17,33 +17,67 @@
                         更新成功！
                     </div>
                     <?php } ?>
-                    <h5 class="personal-title">我的目标</h5>
+                    <h5 class="personal-title">成绩细节</h5>
                     <form action="" method="post">
-                        <input type="hidden" name="id" value="{$target ? $target->id : '-1'}" />
                         <div class="field-box">
-                            <label>标题：</label>
-                            <input class="span5 inline-input" name="title" type="text" value="{$target ? $target->title : ''}" placeholder="简单介绍我的目标" />
+                            <label>课程名称：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('课程名称')}</div>
                         </div>
                         <div class="field-box">
-                            <label>开始时间：</label>
-                            <input class="span5 inline-input" name="start_time" type="date" value="{$target ? $target->start_time : ''}" placeholder="" />
+                            <label>学分：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('学分')}</div>
                         </div>
                         <div class="field-box">
-                            <label>完成时间：</label>
-                            <input class="span5 inline-input" name="achieve_time" type="date" value="{$target ? $target->achieve_time : ''}" placeholder="" />
+                            <label>平时成绩：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('平时成绩')}</div>
                         </div>
                         <div class="field-box">
-                            <label>类型：</label>
-                            <?php foreach($types as $type) { ?>
-                            <input type="radio" name="type_id" value="{$type->id}" style="margin-left:10px; height:39px;" {$type.id == $target.type_id ? 'checked="checked" ' : ''}/> {$type->name}
-                            <?php } ?>
+                            <label>期中成绩：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('期中成绩')}</div>
                         </div>
                         <div class="field-box">
-                            <label>详细内容：</label>
-                            <textarea name="detail" rows="5" class="span5">{$target ? $target->detail : ''}</textarea>
+                            <label>期末成绩：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('期末成绩')}</div>
                         </div>
-                        <div class="span6 field-box actions">
-                            <input type="submit" class="btn-glow primary" value="更新目标" />
+                        <div class="field-box">
+                            <label>实验成绩：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('实验成绩')}</div>
+                        </div>
+                        <div class="field-box">
+                            <label>总评成绩：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('总评成绩')}</div>
+                        </div>
+                        <div class="field-box">
+                            <label>折算成绩：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('折算成绩')}</div>
+                        </div>
+                        <div class="field-box">
+                            <label>补考成绩：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('补考成绩')}</div>
+                        </div>
+                        <div class="field-box">
+                            <label>绩点：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('绩点')}</div>
+                        </div>
+                        <div class="field-box">
+                            <label>课程性质：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('课程性质')}</div>
+                        </div>
+                        <div class="field-box">
+                            <label>课程归属：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('课程归属')}</div>
+                        </div>
+                        <div class="field-box">
+                            <label>选课课号：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('选课课号')}</div>
+                        </div>
+                        <div class="field-box">
+                            <label>学年：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('学年')}</div>
+                        </div>
+                        <div class="field-box">
+                            <label>学期：</label>
+                            <div style="margin-left:4px; height:39px;">{$score->getAttr('学期')}</div>
                         </div>
                     </form>
                 </div>

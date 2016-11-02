@@ -7,13 +7,20 @@ use app\index\model;
 class Index extends Controller
 {
     public function login() {
-        if(input('username')) {
+        if(input('post.username')) {
             $username = input('post.username');
             $password = input('post.password');
-            if($username == 'admin' && $password == 'admin') {
-                session('id', 1);
-                session('power', 0);
+            if(!$username && !$password) {
+                Session::flash('message', 'denied');
+                return $this->fetch();
+            }
+            $user = model\User::get(['username' => $username]);
+            if($user && hash_crypt($password) == $user->password) {
+                session('id', $user->username);
+                session('power', $user->power);
                 return $this->redirect('/user');
+            } else {
+                Session::flash('message', 'denied');
             }
         }
         return $this->fetch();
@@ -29,6 +36,9 @@ class Index extends Controller
                 if(!$model) {
                     Session::flash('message', 'notfound');
                     return $this->redirect('/ilogin');
+                }
+                if(!model\User::get(['username' => $id])) {
+                    $this->add_user($id);
                 }
                 session('id', $id);
                 session('power', 1);
@@ -50,6 +60,12 @@ class Index extends Controller
         }
     }
 
+    private function add_user($id) {
+        $user = new model\User();
+        $user->username = $id;
+        $user->power = 1;
+        $user->save();
+    }
 
     public function logout() {
         Session::set('id', 0);

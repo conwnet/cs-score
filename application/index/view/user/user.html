@@ -13,7 +13,7 @@
                     </div>
                     <?php } else if(session('message') == 'update_success') { ?>
                     <div class="alert alert-success">
-                        更新成功！
+                        修改密码成功！
                     </div>
                     <?php } else if(session('message') == 'denied') { ?>
                     <div class="alert alert-danger">
@@ -22,7 +22,7 @@
                     <?php } ?>
                     <h5 class="personal-title">个人信息</h5>
                     <form action="" method="post">
-                        <input type="hidden" name="number" value="{$user->getAttr('学号')}" />
+                        <input type="hidden" name="id" value="{$user->getAttr('学号')}" />
                         <div class="field-box">
                             <label>学号：</label>
                             <div style="margin-left:4px; height:39px;">{$user->getAttr('学号')}</div>
@@ -50,10 +50,6 @@
                         <div class="field-box">
                             <label>确认密码：</label>
                             <input class="span5 inline-input" name="re_password" type="password" value="" placeholder="如不修改密码请留空" />
-                        </div>
-                        <div class="field-box">
-                            <label>备注：</label>
-                            <textarea name="remark" class="span5"></textarea>
                         </div>
                         <div class="span6 field-box actions">
                             <input type="submit" class="btn-glow primary" value="更新资料" />

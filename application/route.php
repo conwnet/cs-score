@@ -29,5 +29,5 @@ return [
     '/delete/type/[:id]' => 'index/type/delete',
 
     '/scores/[:id]' => 'index/score/scores',
-    '/score/[:id]/[$:number]' => 'index/score/score'
+    '/score/[:id]/[:number]' => 'index/score/score'
 ];

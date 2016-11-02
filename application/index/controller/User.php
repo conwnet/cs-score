@@ -5,15 +5,26 @@ use app\index\model;
 
 class User extends Access
 {
-    private function check($score) {
-        return true;
-    }
-
-    private function update() {
-
-    }
 
     public function admin() {
+        if(session('power'))
+            return $this->redirect('/user');
+
+        $user = model\User::get(['username' => session('id')]);
+        if(input('post.password')) {
+            if(hash_crypt(input('post.password')) == $user->password) {
+                if(input('post.new_password') == input('post.re_password') && input('post.new_password')) {
+                    $user->password = hash_crypt(input('post.new_password'));
+                }
+                $user->remark = input('post.remark');
+                $user->save();
+                Session::flash('message', 'update_success');
+            } else {
+                Session::flash('message', 'denied');
+            }
+            return $this->redirect('/admin');
+        }
+
         $this->assign('title', '管理');
         return $this->fetch();
     }
@@ -21,8 +32,25 @@ class User extends Access
     public function user($id=0) {
         if(session('power'))
             $id = session('id');
-        else if($id == 0 || !get_model($id)) {
+
+        if(!session('power') && !get_model($id))
             return $this->redirect('/admin');
+
+        $user = model\User::get(['username' => session('id')]);
+        if(!$user->password)
+            Session::flash('message', 'no_password');
+        if(input('post.id')) {
+            if(!$user->password || hash_crypt(input('post.password')) == $user->password) {
+                if(input('post.new_password') == input('post.re_password') && input('post.new_password')) {
+                    $user->password = hash_crypt(input('post.new_password'));
+                }
+                $user->remark = input('post.remark');
+                $user->save();
+                Session::flash('message', 'update_success');
+            } else {
+                Session::flash('message', 'denied');
+            }
+            return $this->redirect('/user');
         }
 
         $cj = get_model($id)->cj;
@@ -34,7 +62,9 @@ class User extends Access
 
 
     public function users($page=0, $major=0, $team=0) {
-        if(session('power')) return $this->redirect('/user');
+        if(session('power'))
+            return $this->redirect('/user');
+
         if($page < 0) $page = 0;
 
         $Jsj = new model\jsj\Jsjcj();
@@ -64,12 +94,5 @@ class User extends Access
         return $this->fetch();
     }
 
-    public function delete($id=0) {
-        if(session('power'))
-            return $this->redirect('/user');
-        $user = model\User::get(['id' => $id]);
-        if($user) $user->delete();
-        return $this->redirect('/users');
-    }
 
 }

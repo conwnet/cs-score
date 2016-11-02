@@ -35,7 +35,7 @@ function i_sau_validate($username, $password) {
     $content = curl_exec($ch);
     curl_close($ch);
 
-    return 'ok';
+    return "ok";
     if(!$content) {
         return "timeout";
     } else if(preg_match('/mistake_notice/i', $content)){

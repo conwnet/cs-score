@@ -10,7 +10,9 @@ class Score extends Controller
         if(session('power'))
             $id = session('id');
 
-        $cj = get_model($id)->cj;
+        $model = get_model($id);
+        if(!$model) return $this->redirect('/user');
+        $cj = $model->cj;
         $scores = $cj::where("学号=$id")->select();
 
         $this->assign('user', $scores[0]);
@@ -20,10 +22,16 @@ class Score extends Controller
     }
 
     public function score($id=0, $number=0) {
+        if(session('power'))
+            $id = session('id');
 
-        $score = get_model($id)->cj->where("`学号`='$id' and ``");
-
-
+        $model = get_model($id);
+        if(!$model) return $this->redirect('/user');
+        $scores = $model->cj->where("`学号`='$id' and `选课课号`='$number'")->select();
+        if($scores) $score = $scores[0];
+        else return $this->redirect('/user');
+        $this->assign('score', $score);
+        $this->assign('title', '详细信息');
         return $this->fetch();
     }
 
