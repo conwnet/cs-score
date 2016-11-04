@@ -99,20 +99,26 @@ function get_model($id) {
     return NULL;
 }
 
-function is_pass($score) {
+function pass($score) {
     $s1 = $score->getAttr('总评成绩');
     $s2 = $score->getAttr('补考成绩');
 
-    if(is_numeric($s1) && $s1 < 60 && $s2 < 60)
-        return false;
+    if($s1 == '优秀' || $s1 == '优')
+        return 1;
 
-    if($s1 == '不及格')
-        return false;
+    if($s1 == '良好' || $s1 == '良')
+        return 1;
 
-    if($s1 == '不通过')
-        return false;
+    if($s1 == '中等' || $s1 == '中')
+        return 1;
 
-    return true;
+    if($s1 == '通过' || $s1 == '及格')
+        return 1;
+
+    if(is_numeric($s1) && ($s1 > 60 || $s2 > 60))
+        return 1;
+
+    return 0;
 }
 
 function no_pass($id) {
@@ -123,7 +129,7 @@ function no_pass($id) {
     foreach($bxks as $bxk) {
         $pass = false;
         foreach($cjs as $cj) {
-            if($cj['课程名称'] == $bxk['课程名称'] && is_pass($cj)) {
+            if($cj['课程名称'] == $bxk['课程名称'] && pass($cj) == 1) {
                 $pass = true;
             }
         }
