@@ -115,7 +115,7 @@ function pass($score) {
     if($s1 == '通过' || $s1 == '及格')
         return 1;
 
-    if(is_numeric($s1) && ($s1 > 60 || $s2 > 60))
+    if(is_numeric($s1) && ($s1 >= 60 || $s2 >= 60))
         return 1;
 
     return 0;
